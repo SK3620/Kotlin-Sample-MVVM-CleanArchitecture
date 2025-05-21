@@ -10,8 +10,9 @@ import kotlinx.coroutines.flow.flowOn
 import java.lang.Exception
 import javax.inject.Inject
 
-class GetProductListUseCase @Inject constructor(private val repositoryImpl : RepositoryImpl)  {
-
+class GetProductListUseCase @Inject constructor(
+    private val repositoryImpl : RepositoryImpl
+)  {
     operator fun invoke() : Flow<UiState<List<ProductItem>>> = flow {
         emit(UiState.Loading())
         try {

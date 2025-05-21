@@ -25,10 +25,19 @@ import com.example.composepoc.domain.model.ProductItem
 
 @Composable
 fun listItem(category: ProductItem, onItemClick : (ProductItem) -> Unit) {
-    Card (modifier = Modifier.fillMaxWidth().padding(8.dp)) {
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(5.dp).clickable {
+    Card (
+        modifier = Modifier.fillMaxWidth().padding(8.dp)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(5.dp).clickable {
             onItemClick(category)
         }) {
+            /*
+            rememberAsyncImagePainter:
+            画像を非同期に読み込む
+            再レンダリングでも、remember により状態を保持し、再度読み込みを行わないようにする
+             */
             Image(
                 modifier = Modifier.size(200.dp).padding(8.dp).weight(0.4f),
                 painter = rememberAsyncImagePainter(category.image),

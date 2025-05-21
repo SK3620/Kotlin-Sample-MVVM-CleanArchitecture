@@ -30,18 +30,23 @@ fun listingScreen (){
     if(result.isLoading){
         Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center) {
+        verticalArrangement = Arrangement.Center
+        ){
             CircularProgressIndicator(modifier = Modifier.size(50.dp))
         }
-
     }
+
+    /*
+    LazyColumn:
+    遅延読み込み　スクロールされたタイミングで必要なアイテムが新たに描画されます。
+     */
 
     result.data?.let {
         Column(modifier = Modifier.fillMaxSize()) {
             LazyColumn {
-                items(it){ item->
-                    listItem(item){product->
-                        Toast.makeText(context,product.title,Toast.LENGTH_SHORT).show()
+                items(it) { item->
+                    listItem(item) { product-> // ここでクロージャを渡している
+                        Toast.makeText(context, product.title, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -55,5 +60,4 @@ fun listingScreen (){
             Text(text = result.error.toString())
         }
     }
-
 }

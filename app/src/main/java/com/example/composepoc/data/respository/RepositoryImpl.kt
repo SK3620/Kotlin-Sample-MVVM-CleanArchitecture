@@ -9,7 +9,9 @@ import com.example.composepoc.domain.repository.Repository
 import javax.inject.Inject
 
 
-class RepositoryImpl @Inject constructor(private val apiService: ApiService) : Repository {
+class RepositoryImpl @Inject constructor(
+    private val apiService: ApiService
+) : Repository {
 
     override suspend fun getProductList(): List<ProductItem> {
        return apiService.getAllProductListAPI().map { it.toProductList() }

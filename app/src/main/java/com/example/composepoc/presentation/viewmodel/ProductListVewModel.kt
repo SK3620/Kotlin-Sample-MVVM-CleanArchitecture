@@ -13,9 +13,13 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductListVewModel @Inject constructor(private val productListUseCase: GetProductListUseCase) : ViewModel(){
+class ProductListVewModel @Inject constructor(
+    private val productListUseCase: GetProductListUseCase
+) : ViewModel() {
 
+    // 状態を更新できる内部変数
     private val _productList = mutableStateOf(ProductListState())
+    // View側から状態を読むだけの公開変数
     val productList : State<ProductListState> get() = _productList
 
     init {
@@ -33,5 +37,4 @@ class ProductListVewModel @Inject constructor(private val productListUseCase: Ge
             }
         }.launchIn(viewModelScope)
     }
-
 }
