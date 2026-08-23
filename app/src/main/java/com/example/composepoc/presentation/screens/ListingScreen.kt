@@ -25,12 +25,12 @@ fun listingScreen (){
 
     val viewModel : ProductListVewModel = hiltViewModel()
     val context  = LocalContext.current
-    var result = viewModel.productList.value
+    var result = viewModel.productList.value // 今のデータの状態（読み込み中/成功/失敗）を監視
 
     if(result.isLoading){
-        Column(modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        Column(modifier = Modifier.fillMaxSize(), // 画面の最大サイズまで広がって！
+        horizontalAlignment = Alignment.CenterHorizontally, // 左右の中心へ
+        verticalArrangement = Arrangement.Center // 上下にの中心へ
         ){
             CircularProgressIndicator(modifier = Modifier.size(50.dp))
         }
@@ -44,7 +44,7 @@ fun listingScreen (){
     result.data?.let {
         Column(modifier = Modifier.fillMaxSize()) {
             LazyColumn {
-                items(it) { item->
+                items(it) { item-> // swiftUIでいう、List() { item in 〜 } のこと
                     listItem(item) { product-> // ここでクロージャを渡している
                         Toast.makeText(context, product.title, Toast.LENGTH_SHORT).show()
                     }

@@ -18,6 +18,15 @@ class ProductListVewModel @Inject constructor(
 ) : ViewModel() {
 
     // 状態を更新できる内部変数
+    // mutableStateOf ：「中身が変わると、画面を自動で書き換える」 魔法 変更の通知
+    // SwiftUI でいう、@Published
+    /**
+    4. 変更の通知 (mutableStateOf の威力)
+    ここが mutableStateOf の仕事です。
+    .value が書き換わった瞬間、Composeシステムに対して 「データが変わったよ！この値を使っている画面を書き直して！ 」  と自動で通知が飛びます。（SwiftUIの @Published と同じ動き）
+    5. 再描画 (Recomposition)
+    通知を受けた ListingScreen（UI側）が、変わった部分だけをシュッと描き直します。
+     */
     private val _productList = mutableStateOf(ProductListState())
     // View側から状態を読むだけの公開変数
     val productList : State<ProductListState> get() = _productList
