@@ -20,6 +20,10 @@ import com.example.composepoc.presentation.screens.component.listItem
 import com.example.composepoc.presentation.viewmodel.ProductListVewModel
 
 @Preview(showSystemUi = true, showBackground = true)
+/*
+ステータスバー（時計や電池）やナビゲーションバーを含めた、実際のスマホ画面のような状態でプレビューを表示します。
+これがないと、コンポーネント単体（部品だけ） が浮いているように見えます。
+ */
 @Composable
 fun listingScreen (){
 
