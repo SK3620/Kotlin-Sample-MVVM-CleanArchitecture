@@ -12,6 +12,9 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
+/**
+ * ・@HiltViewModel：このProductListViewModelというクラスはHitlが管理しますよということを示す
+ */
 @HiltViewModel
 class ProductListVewModel @Inject constructor(
     private val productListUseCase: GetProductListUseCase

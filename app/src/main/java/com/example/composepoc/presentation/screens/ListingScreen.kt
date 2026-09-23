@@ -27,6 +27,11 @@ import com.example.composepoc.presentation.viewmodel.ProductListVewModel
 @Composable
 fun listingScreen (){
 
+    /*
+    val viewModel : ProductListVewModel = hiltViewModel()
+    型であるProductListVewModelをもとに、hiltViewModel() がHilt管理下にあるViewModelとして取得し、
+    @HiltViewModel class ProductListVewModel... を取得してくるイメージ
+     */
     val viewModel : ProductListVewModel = hiltViewModel()
     val context  = LocalContext.current
     var result = viewModel.productList.value // 今のデータの状態（読み込み中/成功/失敗）を監視
