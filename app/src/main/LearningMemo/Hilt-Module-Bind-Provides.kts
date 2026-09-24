@@ -129,3 +129,35 @@ abstract class RepositoryModule {
  *
  * =========================================================
  */
+
+/*
+ * =========================================================
+ * モックデータを返させて、簡単に動作確認したい時
+ * =========================================================
+ *
+ *
+ * class MockUserRepository : UserRepository {
+
+    override fun getUser(): User {
+        return User(
+            name = "テスト太郎",
+            age = 30
+        )
+    }
+}
+*
+*
+* @Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+
+    @Binds
+    abstract fun bindUserRepository(
+        repository: MockUserRepository
+    ): UserRepository
+}
+ *
+ *
+ *
+ * =========================================================
+ */
