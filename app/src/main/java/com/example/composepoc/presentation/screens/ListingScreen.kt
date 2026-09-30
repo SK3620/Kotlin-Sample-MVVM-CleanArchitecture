@@ -19,19 +19,18 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.composepoc.presentation.screens.component.listItem
 import com.example.composepoc.presentation.viewmodel.ProductListVewModel
 
-@Preview(showSystemUi = true, showBackground = true)
-/*
-ステータスバー（時計や電池）やナビゲーションバーを含めた、実際のスマホ画面のような状態でプレビューを表示します。
-これがないと、コンポーネント単体（部品だけ） が浮いているように見えます。
- */
+//Preview下にあるのが慣習なので移動させちゃった
 @Composable
-fun listingScreen (){
+fun ListingScreen(){
 
     /*
     val viewModel : ProductListVewModel = hiltViewModel()
     型であるProductListVewModelをもとに、hiltViewModel() がHilt管理下にあるViewModelとして取得し、
     @HiltViewModel class ProductListVewModel... を取得してくるイメージ
      */
+    // çomposableにVM持ってるとPreview作れまてん.....byぷーちゃん
+    //This preview uses a ViewModel. ViewModels often trigger operations not supported by Compose Preview, such as database access, I/ O operations, or network requests. You can read more about preview limitations in our external documentation. Show Exception
+    //https://qiita.com/Nagumo-7960/items/60678c4196c70f07615f
     val viewModel : ProductListVewModel = hiltViewModel()
     val context  = LocalContext.current
     var result = viewModel.productList.value // 今のデータの状態（読み込み中/成功/失敗）を監視
@@ -69,4 +68,15 @@ fun listingScreen (){
             Text(text = result.error.toString())
         }
     }
+}
+
+
+/*
+ステータスバー（時計や電池）やナビゲーションバーを含めた、実際のスマホ画面のような状態でプレビューを表示します。
+これがないと、コンポーネント単体（部品だけ） が浮いているように見えます。
+ */
+@Preview(showSystemUi = true, showBackground = true)
+@Composable
+fun PreviewlistingScreen(){
+    ListingScreen()
 }
