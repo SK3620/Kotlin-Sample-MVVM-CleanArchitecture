@@ -80,3 +80,16 @@ fun StateBasicsSample() {
         }
     }
 }
+
+/**
+ * rememberなしの場合の書き方
+ * @Composable
+ * fun Counter() {
+ *     // remember なし
+ *     var count = 0
+ *
+ *     Button(onClick = { count++ }) {
+ *         Text("現在の値: $count")
+ *     }
+ * }
+ */
