@@ -23,3 +23,16 @@ class GetProductListUseCase @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
 }
+
+/**
+ * swiftUIで例えると、、、？
+ * swift
+ * // Swift (Combine)
+ * func invoke() -> AnyPublisher<UiState, Never> {
+ *     return Deferred {
+ *         Future { promise in
+ *             // ここでデータを送る
+ *         }
+ *     }.eraseToAnyPublisher()
+ * }
+ */
